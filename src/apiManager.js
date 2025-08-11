@@ -35,10 +35,10 @@ export default class ApiManager {
       const data = event.data; // The data of the message
       const dataJSON = data['jsonData']; // The JSON response, if any
 
-      // Kills itself if the message was not intended for Blue Marble
-      if (!(data && data['source'] === 'blue-marble')) {return;}
+      // Kills itself if the message was not intended for Chrysanthemum Marble
+      if (!(data && data['source'] === 'chrysanthemum-marble')) {return;}
 
-      // Kills itself if the message has no endpoint (intended for Blue Marble, but not this function)
+      // Kills itself if the message has no endpoint (intended for Chrysanthemum Marble, but not this function)
       if (!data['endpoint']) {return;}
 
       // Trims endpoint to the second to last non-number, non-null directoy.
@@ -46,9 +46,9 @@ export default class ApiManager {
       // E.g. "wplace.live/api/files/s0/tiles/0/0/0.png" -> "tiles"
       const endpointText = data['endpoint']?.split('?')[0].split('/').filter(s => s && isNaN(Number(s))).filter(s => s && !s.includes('.')).pop();
 
-      console.log(`%cBlue Marble%c: Recieved message about "%s"`, 'color: cornflowerblue;', '', endpointText);
+      console.log(`%cChrysanthemum Marble%c: Recieved message about "%s"`, 'color: cornflowerblue;', '', endpointText);
 
-      // Each case is something that Blue Marble can use from the fetch.
+      // Each case is something that Chrysanthemum Marble can use from the fetch.
       // For instance, if the fetch was for "me", we can update the overlay stats
       switch (endpointText) {
 
@@ -128,7 +128,7 @@ export default class ApiManager {
           const templateBlob = await this.templateManager.drawTemplateOnTile(blobData, tileCoordsTile);
 
           window.postMessage({
-            source: 'blue-marble',
+            source: 'chrysanthemum-marble',
             blobID: blobUUID,
             blobData: templateBlob,
             blink: data['blink']
@@ -136,7 +136,7 @@ export default class ApiManager {
           break;
 
         case 'robots': // Request to retrieve what script types are allowed
-          this.disableAll = dataJSON['userscript']?.toString().toLowerCase() == 'false'; // Disables Blue Marble if site owner wants userscripts disabled
+          this.disableAll = dataJSON['userscript']?.toString().toLowerCase() == 'false'; // Disables Chrysanthemum Marble if site owner wants userscripts disabled
           break;
       }
     });

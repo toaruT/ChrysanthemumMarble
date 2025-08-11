@@ -314,13 +314,13 @@ export default class TemplateManager {
     console.log(`Importing JSON...`);
     console.log(json);
 
-    // If the passed in JSON is a Blue Marble template object...
+    // If the passed in JSON is a Chrysanthemum Marble template object...
     if (json?.whoami == 'ChrysanthemumMarble') {
-      this.#parseChrysanthemumMarble(json); // ...parse the template object as Blue Marble
+      this.#parseChrysanthemumMarble(json); // ...parse the template object as Chrysanthemum Marble
     }
   }
 
-  /** Parses the Blue Marble JSON object
+  /** Parses the Chrysanthemum Marble JSON object
    * @param {string} json - The JSON string to parse
    * @since 0.72.13
    */

@@ -33,7 +33,7 @@ function inject(callback) {
 inject(() => {
 
   const script = document.currentScript; // Gets the current script HTML Script Element
-  const name = script?.getAttribute('bm-name') || '菊のマーブル'; // Gets the name value that was passed in. Defaults to "Blue Marble" if nothing was found
+  const name = script?.getAttribute('bm-name') || '菊のマーブル'; // Gets the name value that was passed in. Defaults to "Chrysanthemum Marble" if nothing was found
   const consoleStyle = script?.getAttribute('bm-cStyle') || ''; // Gets the console style value that was passed in. Defaults to no styling if nothing was found
   const fetchedBlobQueue = new Map(); // Blobs being processed
 
@@ -49,7 +49,7 @@ inject(() => {
     console.groupEnd();
 
     // The modified blob won't have an endpoint, so we ignore any message without one.
-    if ((source == 'blue-marble') && !!blobID && !!blobData && !endpoint) {
+    if ((source == 'chrysanthemum-marble') && !!blobID && !!blobData && !endpoint) {
 
       const callback = fetchedBlobQueue.get(blobID); // Retrieves the blob based on the UUID
 
@@ -91,7 +91,7 @@ inject(() => {
       cloned.json()
         .then(jsonData => {
           window.postMessage({
-            source: 'blue-marble',
+            source: 'chrysanthemum-marble',
             endpoint: endpointName,
             jsonData: jsonData
           }, '*');
@@ -129,7 +129,7 @@ inject(() => {
         });
 
         window.postMessage({
-          source: 'blue-marble',
+          source: 'chrysanthemum-marble',
           endpoint: endpointName,
           blobID: blobUUID,
           blobData: blob,
@@ -146,7 +146,7 @@ inject(() => {
 
       // cloned.blob().then(blob => {
       //   window.postMessage({
-      //     source: 'blue-marble',
+      //     source: 'chrysanthemum-marble',
       //     endpoint: endpointName,
       //     blobData: blob
       //   }, '*');
@@ -252,7 +252,7 @@ function buildOverlayMain() {
            * 
            * Toggles between two distinct UI states:
            * 1. MINIMIZED STATE (60×76px):
-           *    - Shows only the Blue Marble icon and drag bar
+           *    - Shows only the Chrysanthemum Marble icon and drag bar
            *    - Hides all input fields, buttons, and status information
            *    - Applies fixed dimensions for consistent appearance
            *    - Repositions icon with 3px right offset for visual centering
@@ -290,7 +290,7 @@ function buildOverlayMain() {
             // Define elements that should be hidden/shown during state transitions
             // Each element is documented with its purpose for maintainability
             const elementsToToggle = [
-              '#bm-overlay h1',                    // Main title "Blue Marble"
+              '#bm-overlay h1',                    // Main title "Chrysanthemum Marble"
               '#bm-contain-userinfo',              // User information section (username, droplets, level)
               '#bm-overlay hr',                    // Visual separator lines
               '#bm-contain-automation > *:not(#bm-contain-coords)', // Automation section excluding coordinates
