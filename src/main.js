@@ -483,8 +483,24 @@ function buildOverlayMain() {
         .addInput({'type': 'number', 'id': 'bm-input-px', 'placeholder': 'Px X', 'min': 0, 'max': 2047, 'step': 1, 'required': true}).buildElement()
         .addInput({'type': 'number', 'id': 'bm-input-py', 'placeholder': 'Px Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true}).buildElement()
       .buildElement()
-      .addInputFile({'id': 'bm-input-file-template', 'textContent': 'Upload Template', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
-      .addInput({'type': 'text', 'id': 'bm-input-url-template', 'placeholder': '画像URLを入力', 'style': 'margin-top: 4px; width: 100%;'}).buildElement()
+        .addDiv({'id': 'bm-input-image-toggle-wrap'})
+          .addButton({'id': 'bm-input-image-toggle', 'textContent': 'URLで指定'}, (instance, button) => {
+            button.onclick = () => {
+              const fileWrap = document.querySelector('#bm-input-file-wrap');
+              const urlWrap = document.querySelector('#bm-input-url-wrap');
+              const isFile = fileWrap.style.display !== 'none';
+              fileWrap.style.display = isFile ? 'none' : '';
+              urlWrap.style.display = isFile ? '' : 'none';
+              button.textContent = isFile ? 'ファイルで指定' : 'URLで指定';
+            };
+          }).buildElement()
+        .buildElement()
+        .addDiv({'id': 'bm-input-file-wrap'})
+          .addInputFile({'id': 'bm-input-file-template', 'textContent': '画像ファイルを選択', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
+        .buildElement()
+        .addDiv({'id': 'bm-input-url-wrap', 'style': 'display:none;'})
+          .addInput({'type': 'text', 'id': 'bm-input-url-template', 'placeholder': '画像URLを入力', 'style': 'width: 100%;'}).buildElement()
+        .buildElement()
       .addDiv({'id': 'bm-contain-buttons-template'})
         .addButton({'id': 'bm-button-enable', 'textContent': '有効化'}, (instance, button) => {
           button.onclick = () => {

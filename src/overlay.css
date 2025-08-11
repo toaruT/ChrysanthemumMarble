@@ -170,6 +170,38 @@ div:has(> #bm-button-teleport) {
   gap: 1ch;
 }
 
+#bm-input-image-toggle-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.25em;
+}
+
+#bm-input-image-toggle {
+  font-size: small;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  border: 1px solid red;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+#bm-input-file-wrap,
+#bm-input-url-wrap {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+#bm-input-url-wrap input[type="text"] {
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: 1px solid red;
+  border-radius: 0.5em;
+  padding: 0.2em 0.5em;
+  font-size: small;
+}
+
 div:has(> #bm-input-file-template) > button {
   width: 100%;
   white-space: nowrap;
