@@ -290,7 +290,7 @@ function buildOverlayMain() {
             // Define elements that should be hidden/shown during state transitions
             // Each element is documented with its purpose for maintainability
             const elementsToToggle = [
-              '#bm-overlay h1',                    // Main title "Chrysanthemum Marble"
+              '#bm-overlay h1',                    // Main title "Blue Marble"
               '#bm-contain-userinfo',              // User information section (username, droplets, level)
               '#bm-overlay hr',                    // Visual separator lines
               '#bm-contain-automation > *:not(#bm-contain-coords)', // Automation section excluding coordinates
@@ -484,6 +484,7 @@ function buildOverlayMain() {
         .addInput({'type': 'number', 'id': 'bm-input-py', 'placeholder': 'Px Y', 'min': 0, 'max': 2047, 'step': 1, 'required': true}).buildElement()
       .buildElement()
       .addInputFile({'id': 'bm-input-file-template', 'textContent': 'Upload Template', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
+      .addInput({'type': 'text', 'id': 'bm-input-url-template', 'placeholder': '画像URLを入力', 'style': 'margin-top: 4px; width: 100%;'}).buildElement()
       .addDiv({'id': 'bm-contain-buttons-template'})
         .addButton({'id': 'bm-button-enable', 'textContent': '有効化'}, (instance, button) => {
           button.onclick = () => {
@@ -492,9 +493,9 @@ function buildOverlayMain() {
           }
         }).buildElement()
         .addButton({'id': 'bm-button-create', 'textContent': '作成'}, (instance, button) => {
-          button.onclick = () => {
-            const input = document.querySelector('#bm-input-file-template');
-
+          button.onclick = async () => {
+            const inputFile = document.querySelector('#bm-input-file-template');
+            const inputUrl = document.querySelector('#bm-input-url-template');
             const coordTlX = document.querySelector('#bm-input-tx');
             if (!coordTlX.checkValidity()) {coordTlX.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
             const coordTlY = document.querySelector('#bm-input-ty');
@@ -504,16 +505,28 @@ function buildOverlayMain() {
             const coordPxY = document.querySelector('#bm-input-py');
             if (!coordPxY.checkValidity()) {coordPxY.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
 
-            // Kills itself if there is no file
-            if (!input?.files[0]) {instance.handleDisplayError(`No file selected!`); return;}
+            let file = inputFile?.files[0];
+            let fileName = file?.name.replace(/\.[^/.]+$/, '');
+            // ファイルが未選択ならURL入力を使う
+            if (!file && inputUrl?.value) {
+              try {
+                const res = await fetch(inputUrl.value);
+                if (!res.ok) throw new Error('画像の取得に失敗しました');
+                const blob = await res.blob();
+                file = new File([blob], 'url-image', { type: blob.type });
+                fileName = inputUrl.value.split('/').pop()?.split('?')[0] || 'url-image';
+              } catch (e) {
+                instance.handleDisplayError('画像URLの取得に失敗しました');
+                return;
+              }
+            }
+            if (!file) {instance.handleDisplayError(`ファイルまたは画像URLを指定してください`); return;}
 
-            templateManager.createTemplate(input.files[0], input.files[0]?.name.replace(/\.[^/.]+$/, ''), [Number(coordTlX.value), Number(coordTlY.value), Number(coordPxX.value), Number(coordPxY.value)]);
-
-            // console.log(`TCoords: ${apiManager.templateCoordsTilePixel}\nCoords: ${apiManager.coordsTilePixel}`);
-            // apiManager.templateCoordsTilePixel = apiManager.coordsTilePixel; // Update template coords
-            // console.log(`TCoords: ${apiManager.templateCoordsTilePixel}\nCoords: ${apiManager.coordsTilePixel}`);
-            // templateManager.setTemplateImage(input.files[0]);
-
+            templateManager.createTemplate(
+              file,
+              fileName,
+              [Number(coordTlX.value), Number(coordTlY.value), Number(coordPxX.value), Number(coordPxY.value)]
+            );
             instance.handleDisplayStatus(`Drew to canvas!`);
           }
         }).buildElement()
