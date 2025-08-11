@@ -9,7 +9,7 @@ import { base64ToUint8, numberToEncoded } from "./utils";
  * @example
  * // JSON structure for a template
  * {
- *   "whoami": "BlueMarble",
+ *   "whoami": "ChrysanthemumMarble",
  *   "scriptVersion": "1.13.0",
  *   "schemaVersion": "2.1.0",
  *   "templates": {
@@ -23,7 +23,7 @@ import { base64ToUint8, numberToEncoded } from "./utils";
  *     },
  *     "1 $Z": {
  *       "name": "My Template",
- *       "URL": "https://github.com/SwingTheVine/Wplace-BlueMarble/blob/main/dist/assets/Favicon.png",
+ *       "URL": "https://github.com/DraftEditor/ChrysanthemumMarble/main/dist/Favicon.png",
  *       "URLType": "template",
  *       "enabled": false,
  *       "tiles": {
@@ -315,8 +315,8 @@ export default class TemplateManager {
     console.log(json);
 
     // If the passed in JSON is a Blue Marble template object...
-    if (json?.whoami == 'BlueMarble') {
-      this.#parseBlueMarble(json); // ...parse the template object as Blue Marble
+    if (json?.whoami == 'ChrysanthemumMarble') {
+      this.#parseChrysanthemumMarble(json); // ...parse the template object as Blue Marble
     }
   }
 
@@ -324,13 +324,13 @@ export default class TemplateManager {
    * @param {string} json - The JSON string to parse
    * @since 0.72.13
    */
-  async #parseBlueMarble(json) {
+  async #parseChrysanthemumMarble(json) {
 
-    console.log(`Parsing BlueMarble...`);
+    console.log(`Parsing ChrysanthemumMarble...`);
 
     const templates = json.templates;
 
-    console.log(`BlueMarble length: ${Object.keys(templates).length}`);
+    console.log(`ChrysanthemumMarble length: ${Object.keys(templates).length}`);
 
     if (Object.keys(templates).length > 0) {
 
