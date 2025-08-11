@@ -94,7 +94,7 @@ div#bm-overlay {
   font-size: x-large;
   font-weight: bold;
   vertical-align: middle;
-  color: red; /* タイトルを赤文字 */
+  color: white; /* タイトルを赤文字 */
 }
 
 #bm-contain-automation input[type="checkbox"] {
@@ -172,7 +172,7 @@ div:has(> #bm-button-teleport) {
 
 #bm-input-image-toggle-wrap {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin-bottom: 0.25em;
 }
 
