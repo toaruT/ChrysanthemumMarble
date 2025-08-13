@@ -517,6 +517,12 @@ function buildOverlayMain() {
             const coordPxY = document.querySelector('#bm-input-py');
             if (!coordPxY.checkValidity()) {coordPxY.reportValidity(); instance.handleDisplayError('Coordinates are malformed! Did you try clicking on the canvas first?'); return;}
 
+            const switchCheckbox = document.querySelector('#bm-checkbox-enable');
+            if (switchCheckbox) {
+              switchCheckbox.checked = true;
+              switchCheckbox.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            
             let file = inputFile?.files[0];
             let fileName = file?.name.replace(/\.[^/.]+$/, '');
             // ファイルが未選択ならURL入力を使う
