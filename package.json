@@ -1,6 +1,6 @@
 {
   "name": "chrysanthemummarble",
-  "version": "0.86.0",
+  "version": "0.87.0",
   "type": "module",
   "scripts": {
     "build": "node build/build.js",
