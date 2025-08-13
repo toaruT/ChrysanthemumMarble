@@ -7,16 +7,16 @@
 // @license      MPL-2.0
 // @supportURL   https://discord.gg/tpeBPy46hf
 // @homepageURL  https://github.com/DraftEditor/ChrysanthemumMarble
-// @icon         https://raw.githubusercontent.com/DraftEditor/ChrysanthemumMarble/main/dist/assets/Favicon.png
-// @updateURL    https://raw.githubusercontent.com/DraftEditor/ChrysanthemumMarble/refs/heads/main/dist/ChrysanthemumMarble.user.js
-// @downloadURL  https://raw.githubusercontent.com/DraftEditor/ChrysanthemumMarble/refs/heads/main/dist/ChrysanthemumMarble.user.js
+// @icon         https://raw.githubusercontent.com/DraftEditor/ChrysanthemumMarble/master/dist/assets/Favicon.png
+// @updateURL    https://raw.githubusercontent.com//gori-GORILLA-gori/ChrysanthemumMarble/refs/heads/master/dist/ChrysanthemumMarble.user.js
+// @downloadURL  https://raw.githubusercontent.com//gori-GORILLA-gori/ChrysanthemumMarble/refs/heads/master/dist/ChrysanthemumMarble.user.js
 // @run-at       document-start
 // @match        *://*.wplace.live/*
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM.setValue
 // @grant        GM_getValue
-// @resource     CSS-BM-File https://raw.githubusercontent.com/DraftEditor/ChrysanthemumMarble/refs/heads/main/dist/ChrysanthemumMarble.user.css
+// @resource     CSS-BM-File https://raw.githubusercontent.com/gori-GORILLA-gori/ChrysanthemumMarble/refs/heads/master/dist/ChrysanthemumMarble.user.css
 // ==/UserScript==
 
 // Wplace  --> https://wplace.live
