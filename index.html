@@ -5,143 +5,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>菊のマーブル - README</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #c9d1d9; /* 明るいグレー */
-            max-width: 900px;
-            margin: 20px auto;
+            font-family: 'Noto Sans JP', 'Meiryo', 'system-ui', sans-serif;
+            line-height: 1.8;
+            color: #e6edf3;
+            background-color: #0d1117;
+            margin: 0;
             padding: 20px;
-            background-color: #0d1117; /* 暗い黒 */
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #161b22;
+            padding: 30px 50px;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         h1, h2 {
-            border-bottom: 2px solid #30363d; /* 暗いグレーの線 */
-            padding-bottom: 0.3em;
-            color: #e6edf3; /* 白に近い色 */
+            color: #58a6ff;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 0.4em;
+            margin-top: 2em;
+            margin-bottom: 1.2em;
+            font-weight: 700;
         }
         h1 {
-            font-size: 2em;
+            font-size: 2.6em;
+            border-bottom-width: 2px;
         }
         h2 {
-            font-size: 1.5em;
+            font-size: 1.8em;
+        }
+        p, li {
+            font-size: 1.05em;
+            color: #c9d1d9;
         }
         a {
-            color: #58a6ff; /* 明るい青 */
+            color: #58a6ff;
             text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
         }
         a:hover {
+            color: #79c0ff;
             text-decoration: underline;
         }
         code {
-            background-color: #21262d; /* コードブロックの背景色 */
-            color: #c9d1d9;
-            padding: 2px 4px;
-            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: rgba(110,118,129,0.2);
+            padding: 0.2em 0.5em;
+            border-radius: 6px;
+            font-size: 0.9em;
+            border: 1px solid #30363d;
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 4px;
-            margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            border: 1px solid #30363d; /* 画像の枠線 */
+            border-radius: 8px;
+            margin: 25px auto;
+            border: 1px solid #30363d;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        ul {
-            padding-left: 20px;
+        ol, ul {
+            padding-left: 30px;
         }
         li {
-            margin-bottom: 5px;
+            margin-bottom: 12px;
+            padding-left: 5px;
         }
         strong {
             color: #e6edf3;
+            font-weight: 700;
+        }
+        /* Add a bit more space for nested lists */
+        ul ul, ol ol, ul ol, ol ul {
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>菊のマーブル</h1>
 
-    <h1>菊のマーブル</h1>
+        <h2>菊のマーブルとは</h2>
+        <p>菊のマーブルはWplace上に指定した画像のガイドを表示するツールです</p>
+        <img src="https://raw.githubusercontent.com/gori-GORILLA-gori/ChrysanthemumMarble/main/image-3.png" width="200">
+        <p>菊のマーブルは<a href="https://github.com/SwingTheVine/Wplace-BlueMarble">BlueMarble</a>というツールを日本語化、機能の追加、UIの変更などした<strong>ユーザースクリプト</strong>です</p>
+        <p>Tampermonkeyという拡張機能を使用して動作します。</p>
 
-    <h2>菊のマーブルとは</h2>
-    <p>菊のマーブルはWplace上に指定した画像のガイドを表示するツールです</p>
-    <img src="https://raw.githubusercontent.com/gori-GORILLA-gori/ChrysanthemumMarble/main/image-3.png" width="200">
-    <p>菊のマーブルは<a href="https://github.com/SwingTheVine/Wplace-BlueMarble">BlueMarble</a>というツールを日本語化、機能の追加、UIの変更などした<strong>ユーザースクリプト</strong>です</p>
-    <p>Tampermonkeyという拡張機能を使用して動かします</p>
+        <h2>Tampermonkeyの導入方法</h2>
+        <ol>
+            <li><strong>使用しているブラウザのウェブストアから<code>Tampermonkey</code>をインストールする</strong>
+                <ul>
+                    <li>Chrome / Edge : <a href="https://chromewebstore.google.com/?hl=ja">Chromeウェブストア</a></li>
+                    <li>Edge : <a href="https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home?hl=ja-JP">Edgeアドオン</a></li>
+                    <li>Firefox : <a href="https://addons.mozilla.org/ja/firefox/">Firefoxアドオン</a></li>
+                </ul>
+            </li>
+            <li><strong>ブラウザ右上の拡張機能一覧から<code>Tampermonkey</code>の管理ページを開く</strong>
+                <ul>
+                    <li>Chrome / Edge の場合: 「開発者モード」を有効化する</li>
+                    <li>Firefoxの場合は不要</li>
+                </ul>
+            </li>
+        </ol>
 
-    <h2>Tampermonkeyの導入方法</h2>
-    <ol>
-        <li><strong>使用しているブラウザのウェブストアから<code>Tampermonkey</code>をインストールする</strong>
-            <ul>
-                <li>Chrome / Edge : <a href="https://chromewebstore.google.com/?hl=ja">Chromeウェブストア</a></li>
-                <li>Edge : <a href="https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home?hl=ja-JP">Edgeアドオン</a></li>
-                <li>Firefox : <a href="https://addons.mozilla.org/ja/firefox/">Firefoxアドオン</a></li>
-            </ul>
-        </li>
-        <li><strong>ブラウザ右上の拡張機能一覧から<code>Tampermonkey</code>の管理ページを開く</strong>
-            <ul>
-                <li>Chrome / Edge の場合: 「開発者モード」を有効化する</li>
-                <li>Firefoxの場合は不要</li>
-            </ul>
-        </li>
-    </ol>
+        <h2>菊のマーブルの導入方法</h2>
+        <p><strong>現在、公式リポジトリではマージの際に問題がありバグが発生しています。お手数ですが、正常に動作するこちらのフォーク版をお使いください。</strong></p>
+        <ol>
+            <li><strong>スクリプトのURLへ行く</strong>
+                <p>現時点(2025/8/14)で正常に動くリンク</p>
+                <p><a href="https://github.com/gori-GORILLA-gori/ChrysanthemumMarble/raw/refs/heads/main/dist/ChrysanthemumMarble.user.js">https://github.com/gori-GORILLA-gori/ChrysanthemumMarble/raw/refs/heads/main/dist/ChrysanthemumMarble.user.js</a></p>
+            </li>
+            <li><strong>インストールする</strong>
+                <p>自動でTampermonkeyでのインストール画面になるのでインストールボタンを押しインストールする</p>
+            </li>
+            <li><strong>もしWplaceを開いているならリロードする</strong>
+                <p>リロードしないとインストールが適用されません</p>
+            </li>
+        </ol>
 
-    <h2>菊のマーブルの導入方法</h2>
-    <p><strong>現在菊のマーブル公式リポジトリがバグが発生しているので僕がフォークし修正してプルリクエストを送った段階の物を使用してください！</strong></p>
-    <ol>
-        <li><strong>スクリプトのURLへ行く</strong>
-            <p>現時点(2025/8/14)で正常に動くリンク</p>
-            <p><a href="https://github.com/gori-GORILLA-gori/ChrysanthemumMarble/raw/refs/heads/main/dist/ChrysanthemumMarble.user.js">https://github.com/gori-GORILLA-gori/ChrysanthemumMarble/raw/refs/heads/main/dist/ChrysanthemumMarble.user.js</a></p>
-        </li>
-        <li><strong>インストールする</strong>
-            <p>自動でTampermonkeyでのインストール画面になるのでインストールボタンを押しインストールする</p>
-        </li>
-        <li><strong>もしWplaceを開いているならリロードする</strong>
-            <p>リロードしないとインストールが適用されません</p>
-        </li>
-    </ol>
-
-    <h2>使用方法</h2>
-    <img src="https://raw.githubusercontent.com/gori-GORILLA-gori/ChrysanthemumMarble/main/kikumarble.png" width="300">
-    <ol>
-        <li><strong>ドラッグエリア</strong>
-            <p>この範囲をクリックしながら動かすとウィンドウ全体をドラッグできます</p>
-        </li>
-        <li><strong>最小化ボタン</strong>
-            <p>この範囲をクリックすると最小化と展開を切り替えられます</p>
-        </li>
-        <li><strong>情報表示</strong>
-            <p>自分のユーザー名、使用できるドロップ、何ピクセル塗れば次のレベルへ行けるか、などの情報を表示します</p>
-        </li>
-        <li><strong>ピンの位置を座標に</strong>
-            <p>現在ピンを指している場所を画像に使用する座標にします</p>
-        </li>
-        <li><strong>座標を指定</strong>
-            <p>座標を入力して指定できます</p>
-        </li>
-        <li><strong>画像読み込みモード切替ボタン</strong>
-            <p><code>PCにあるローカルファイルを指定 / URLで画像を指定</code>を切り替えられます</p>
-        </li>
-        <li><strong>画像ファイルを指定ボタン</strong>
-            <p>使用する画像をローカルファイルから選べます</p>
-        </li>
-        <li><strong>画像URLを入力エリア</strong>
-            <p>ここに画像のリンク(ディスコードでアップロードされた画像のリンク等)を書いて使用することができます</p>
-        </li>
-        <li><strong>作成ボタン</strong>
-            <p>指定した座標、画像でガイドを作成します(この処理にはラグが発生します)(10が自動でONになります)</p>
-        </li>
-        <li><strong>有効無効切り替えスイッチ</strong>
-            <p>スイッチを切り替えることで表示を出したり消したりできます(この処理にはラグが発生します)</p>
-        </li>
-        <li><strong>ログ</strong>
-            <p>ログが表示されます。右下をドラッグすればサイズを変えられます(使用することはほぼ無い)</p>
-        </li>
-        <li><strong>カラーコンバーターへ</strong>
-            <p><a href="https://pepoafonso.github.io/color_converter_wplace/ja/">Wplaceカラーコンバーター</a>という菊のマーブル等に使うガイド用の画像を生成できるツールへ移動します</p>
-        </li>
-    </ol>
-
+        <h2>使用方法</h2>
+        <img src="https://raw.githubusercontent.com/gori-GORILLA-gori/ChrysanthemumMarble/main/kikumarble.png" width="300">
+        <ol>
+            <li><strong>ドラッグエリア</strong>
+                <p>この範囲をクリックしながら動かすとウィンドウ全体をドラッグできます</p>
+            </li>
+            <li><strong>最小化ボタン</strong>
+                <p>この範囲をクリックすると最小化と展開を切り替えられます</p>
+            </li>
+            <li><strong>情報表示</strong>
+                <p>自分のユーザー名、使用できるドロップ、何ピクセル塗れば次のレベルへ行けるか、などの情報を表示します</p>
+            </li>
+            <li><strong>ピンの位置を座標に</strong>
+                <p>現在ピンを指している場所を画像に使用する座標にします</p>
+            </li>
+            <li><strong>座標を指定</strong>
+                <p>座標を入力して指定できます</p>
+            </li>
+            <li><strong>画像読み込みモード切替ボタン</strong>
+                <p><code>PCにあるローカルファイルを指定 / URLで画像を指定</code>を切り替えられます</p>
+            </li>
+            <li><strong>画像ファイルを指定ボタン</strong>
+                <p>使用する画像をローカルファイルから選べます</p>
+            </li>
+            <li><strong>画像URLを入力エリア</strong>
+                <p>ここに画像のリンク(ディスコードでアップロードされた画像のリンク等)を書いて使用することができます</p>
+            </li>
+            <li><strong>作成ボタン</strong>
+                <p>指定した座標と画像でガイドを作成します (この処理には少し時間がかかります)。作成後、ガイドの表示は自動で有効になります。</p>
+            </li>
+            <li><strong>有効無効切り替えスイッチ</strong>
+                <p>スイッチを切り替えることで、ガイドの表示・非表示を切り替えられます（この処理には少し時間がかかります）。</p>
+            </li>
+            <li><strong>ログ</strong>
+                <p>ログが表示されます。右下をドラッグすればサイズを変えられます(使用することはほぼ無い)</p>
+            </li>
+            <li><strong>カラーコンバーターへ</strong>
+                <p><a href="https://pepoafonso.github.io/color_converter_wplace/ja/">Wplaceカラーコンバーター</a>という菊のマーブル等に使うガイド用の画像を生成できるツールへ移動します</p>
+            </li>
+        </ol>
+    </div>
 </body>
 </html>
-
