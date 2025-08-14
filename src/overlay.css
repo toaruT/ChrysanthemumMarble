@@ -202,13 +202,15 @@ div:has(> #bm-button-teleport) {
   gap: 1ch;
 }
 
-#bm-input-image-toggle-wrap {
+#bm-input-image-toggle-wrap,
+#bm-get-coords-from-name {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.25em;
 }
 
-#bm-input-image-toggle {
+#bm-input-image-toggle,
+#bm-get-coords {
   font-size: small;
   padding: 0.2em 1em;
   border-radius: 1em;
