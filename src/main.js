@@ -488,14 +488,30 @@ function buildOverlayMain() {
           .addButton({'id': 'bm-input-image-toggle', 'textContent': 'URLで指定'}, (instance, button) => {
             button.onclick = () => {
               const fileWrap = document.querySelector('#bm-input-file-wrap');
+              const getcoordsWrap = document.querySelector('#bm-get-coords-from-name');
               const urlWrap = document.querySelector('#bm-input-url-wrap');
               const isFile = fileWrap.style.display !== 'none';
               fileWrap.style.display = isFile ? 'none' : '';
+              getcoordsWrap.style.display = isFile ? 'none' : '';
               urlWrap.style.display = isFile ? '' : 'none';
               button.textContent = isFile ? 'ファイルで指定' : 'URLで指定';
             };
           }).buildElement()
         .buildElement()
+      .addDiv({'id': 'bm-get-coords-from-name'})
+          .addButton({'id': 'bm-get-coords', 'textContent': 'ファイル名から座標を取得'}, (instance, button) => {
+            button.onclick = () => {
+              let inputFile = document.getElementById('bm-input-file-template');
+              let coordFile = inputFile?.files[0];
+              let fileName = coordFile?.name.replace(/\.[^/.]+$/, '').split(/\-|\./);
+              instance.updateInnerHTML('bm-input-tx', fileName[0] || '');
+              instance.updateInnerHTML('bm-input-ty', fileName[1] || '');
+              instance.updateInnerHTML('bm-input-px', fileName[2] || '');
+              instance.updateInnerHTML('bm-input-py', fileName[3] || '');
+            };
+          }).buildElement()
+        .buildElement()
+        
         .addDiv({'id': 'bm-input-file-wrap'})
           .addInputFile({'id': 'bm-input-file-template', 'textContent': '画像ファイルを選択', 'accept': 'image/png, image/jpeg, image/webp, image/bmp, image/gif'}).buildElement()
         .buildElement()
